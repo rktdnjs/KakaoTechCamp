@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"> -->
+    <!-- 각 브라우저에서 제공하는 디자인에 따라 보이는 나의 웹을 동일하게 보이기 위해서는 전부 초기화 하고 작성하는 것이 중요함 -->
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div>
+        <h1>오늘의 날씨</h1>
+        <img src="https://img.freepik.com/premium-photo/typhoon-from-space-elements-of-this-image-furnished-by-nasa-high-quality-photo_496756-8488.jpg" alt="태풍 이미지">
+    </div>
+
+    <!-- ul > li * 4  실습 -->
+    <div>
+        <ul>
+            <li>사과</li>
+            <li>딸기</li>
+            <li>수박</li>
+            <li>오렌지</li>
+        </ul>
+    </div>
+
+    <!-- a 태그 실습 -->
+    <div>
+        <a href="https://naver.com" target="_blank">NAVER</a>
+        <a href="https://google.com" target="_blank">GOOGLE</a>
+    </div>
+
+    <!-- lorem을 사용하면 아무말 대잔치 문구 작성 가능 -->
+    <p>Lorem ipsum dolor sit amet consectetur <span>adipisicing elit.</span> Totam provident tenetur quaerat excepturi consectetur at pariatur dolore.<br>Optio delectus ipsa cupiditate, iusto fuga blanditiis rerum ex quia, harum, assumenda maiores.</p>
+
+    <!-- Input 실습 -->
+    <input type="text" placeholder="Input Text Here"/>
+    <input type="text" placeholder="Diabled Input" disabled/>
+
+    <!-- Checkbox & Radio 실습 -->
+    <div>
+        <label for="">
+            <input type="checkbox" checked/> Apple
+        </label>
+        <label for="">
+            <input type="checkbox"/> Banana
+        </label>
+    </div>
+
+    <div>
+        <label for="">
+            <input type="radio" name="fruits"/> Apple
+        </label>
+        <label for="">
+            <input type="radio" name="fruits"/> Banana
+        </label>
+    </div>
+
+    <!-- table 실습 tr(행) td(열) -->
+    <div>
+        <table>
+            <tr>
+                <td>1-1</td>
+                <td>1-2</td>
+                <td>1-3</td>
+            </tr>
+            <tr>
+                <td>2-1</td>
+                <td colspan="2">2-2</td>
+                <!-- colspan : 열을 몇 칸 확장할 것인가 -->
+                <!-- colspan 사용은 비추, 나중에 CSS Grid를 통해 레이아웃 작업 추천! -->
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>
