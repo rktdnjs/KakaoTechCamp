@@ -1,0 +1,69 @@
+.box, .box2 {
+    width: 200px;
+    height: 200px;
+    background-color: orange;
+    transition: 1s; /* 전환하는게 걸리는 시간 */
+}
+
+/* 가상 클래스 선택자 */
+/* ex) :hover */
+/* 우리가 어떠한 행동을 하였을 때 작동함 */
+/* .box:hover {
+    width: 300px;
+    background-color: royalblue;
+} */
+
+.box:active {
+    width: 300px;
+    background-color: royalblue;
+}
+
+input {
+
+}
+
+/* focus 가상 클래스 선택자는 해당 요소가 적용되는 선택자에 대해서만 사용 가능하다! */
+/* focus가 아닌 요소에 focus를 사용하고 싶으면, 태그에 tabindex = "-1"을 사용하자! */
+input:focus {
+    background-color: orange;
+}
+
+.box2::before {
+    content: "(Before 삽입)";
+}
+
+/* 인라인 요소를 블록 요소로 바꾸어 주어야 아무 내용이 없어도 CSS가 적용될 수 있다. */
+/* 인라인 요소일 경우 아무 내용이 존재하지 않으면 CSS가 적용되지 않는다(공간 차지x). */
+.box2::after {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-color: royalblue;
+}
+
+/* 특정 속성을 가진 HTML 요소에 대해서 CSS를 적용가능하다! */
+[type="text"] {
+    background-color : slateblue;
+}
+
+[data-fruit-name] {
+    background-color : red;
+}
+
+/* inherit를 이용하여 원래 상속받지 않는 속성도 상속받을 수 있게함 */
+.parent {
+    width: 300px;
+    height: 200px;
+    background-color: red;
+}
+
+/* 부모 요소의 높이를 상속받아서 그대로 사용함!(inherit) */
+.child {
+    width: 100px;
+    height: inherit;
+    position: fixed;
+    background-color: orange;
+    /* top: 100px;
+    right: 100px; */
+}
