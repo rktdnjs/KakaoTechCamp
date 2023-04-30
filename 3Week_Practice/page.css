@@ -1,0 +1,65 @@
+html {
+    /* font-size : 16px; -> HTML 기본 속성 */
+}
+
+/* div {
+    background-color: orange;
+} */
+
+/* span 태그는 인라인 요소이기 때문에 width & height를 주어도 아무런 효과가 없다. */
+/* 인라인 요소는 레이아웃이 아닌, 글자를 제어하기 위해 만들어졌기 때문! */
+span {
+    background-color: orange;
+}
+
+.parent {
+    width: 300px;
+    height: 200px;
+    background-color: royalblue;
+}
+
+.child {
+    /* width: 100px; */
+    /* max-width: 300px; 길이 제한 당함  */
+    /* width : 20em -> 기본적으로 16px이 적용(html 기본 세팅)되어 있으므로, 이 경우 20em = 320px의 크기를 가짐*/
+    /* 만약 부모 요소의 font-size를 10px로 지정할 경우 이 속성이 상속되어 child는 10px이 된다. 이 경우 20em = 200px */
+    /* rem은 html 요소의 폰트 크기를 기준으로 하기 때문에, 16px 세팅의 경우 이 때 20rem = 320px을 차지하게 된다. */
+    /* vw : 현재 보고있는 화면(뷰 포트)의 가로 너비를 사용함. 예를 들어 50vw이면 50/100 = 50%만큼을 사용함 */
+    /* vh도 위의 vw와 방향만 다르고 똑같은 개념이다. */
+    width: 50%;
+    height: 50%;
+    background-color: orange;
+}
+
+.container .item {
+    width: 100px;
+    height: 100px;
+    background-color: orange;
+    border: 4px solid red;
+
+}
+
+.container .item:first-child {
+    padding: 20px;
+}
+
+.box {
+    /* width: 100px;
+    height: 100px; */
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+}
+
+/* 패딩 20 + 20 테두리 4 + 4 총 48만큼의 크기가 요소에 추가되었음 */
+.box:first-child {
+    /* 일일이 수동으로 계산하기 쉽지 않음...그래서 박스 사이징을 사용! */
+    /* width: 52px;
+    height: 52px; */
+
+    /* 요소에 지정한 가로 세로의 너비만큼 정확한 크기로 내부 여백 & 테두리 선을 추가하고 싶을 경우 */
+    /* box-sizing: border-box; 이 친구를 사용! */
+    box-sizing: border-box;
+    border: 4px solid red;
+    padding: 20px;
+}
