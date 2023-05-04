@@ -1,0 +1,103 @@
+body {
+    height: 3000px;
+}
+
+.parent {
+    width: 100px;
+    height: 100px;
+    padding: 30px;
+    background-color: royalblue;
+}
+
+.child {
+    width: 200px;
+    height: 100px;
+    background-color: orange;
+    opacity: 0.7;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 700;
+    font-style: italic;
+    font-family: serif; /* 바탕체 */
+}
+
+p {
+    /* 16px는 기본값임 */
+    /* font-size: 16px; */
+    width: 350px;
+    padding: 10px;
+    border: 1px solid;
+    box-sizing: border-box;
+    line-height: 1.4;
+}
+
+a {
+    display: block;
+    width: 200px;
+    height: 100px;
+    background-color: orange;
+    font-size: 22px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    /* line-height의 원리를 생각해보면, 해당 요소의 높이만큼 주면 그 가운데에 글자가 배치된다. */
+    line-height: 100px;
+}
+
+.background {
+    /* width: 200px; */
+    height: 200px;
+    background-color: orange;
+    /* 이미지가 요소의 배경으로 삽입한것이기 때문에 요소의 크기보다 클 경우 짤리게 된다. */
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/4/47/Cocktail_02.jpg);
+    
+    /* 이미지가 요소의 배경으로 삽입되어 있으나, 요소가 일부 짤려서 출력된다. */
+    background-size: cover;
+
+    /* 요소의 배경으로 들어가는 이미지가 반복되지 않도록 함 */
+    background-repeat: no-repeat;
+
+    /* 요소의 배경으로 들어가는 이미지가 어디에 배치될 것인지 */
+    background-position: center;
+
+    /* 얘를 쓸 경우 배경 이미지가 요소의 더 넓은 너비가 아니고 화면의 더 넓은 너비에 맞춰져버림 */
+    background-attachment: fixed;
+}
+
+.wrap {
+    width: 400px;
+    height: 300px;
+    background-color: tomato;
+    position: relative;
+}
+
+.conatiner {
+    width: 300px;
+    background-color: royalblue;
+    /* position: relative; */
+}
+
+.conatiner .item {
+    border: 4px dashed red;
+    background-color: orange;
+}
+
+.conatiner .item:nth-child(1) {
+    width: 100px;
+    height: 100px;
+}
+
+.conatiner .item:nth-child(2) {
+    width: 140px;
+    height: 70px;
+    position: absolute;
+    bottom: 30px;
+    right: 60px;
+}
+
+.conatiner .item:nth-child(3) {
+    width: 70px;
+    height: 120px;
+}
