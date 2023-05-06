@@ -1,7 +1,7 @@
 body {
     height: 3000px;
 }
-
+ 
 .parent {
     width: 100px;
     height: 100px;
@@ -73,23 +73,23 @@ a {
     position: relative;
 }
 
-.conatiner {
+.container {
     width: 300px;
     background-color: royalblue;
     /* position: relative; */
 }
 
-.conatiner .item {
+.container .item {
     border: 4px dashed red;
     background-color: orange;
 }
 
-.conatiner .item:nth-child(1) {
+.container .item:nth-child(1) {
     width: 100px;
     height: 100px;
 }
 
-.conatiner .item:nth-child(2) {
+.container .item:nth-child(2) {
     width: 140px;
     height: 70px;
     position: absolute;
@@ -97,7 +97,69 @@ a {
     right: 60px;
 }
 
-.conatiner .item:nth-child(3) {
+.container .item:nth-child(3) {
     width: 70px;
     height: 120px;
+}
+
+._container {
+    display: flex;
+    width: 1000px;
+    background-color: royalblue;
+}
+
+._container .align {
+    width: 100px;
+    height: 100px;
+    border: 3px dashed red;
+    background-color: orange;
+}
+
+.__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 400px;
+    background-color: royalblue;
+}
+
+.__container .wrap_item {
+    width: 100px;
+    height: 100px;
+    border: 3px dashed red;
+    background-color: orange;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+.__container .wrap_item:nth-child(3)
+{
+    flex-grow: 2;
+}
+
+.transition {
+    width: 100px;
+    height: 100px;
+    background-color: orange;
+    transition: width .5s, background-color 2s; 
+}
+
+.transition:hover {
+    width: 300px;
+    background-color: royalblue;
+}
+
+.transform_con {
+    margin: 200px;
+    width: 100px;
+    height: 100px;
+    background-color: royalblue;
+}
+
+.transform_item {
+    width: 100px;
+    height: 100px;
+    background-color: orange;
+    transform: rotate(45deg) scale(1.0);
 }
