@@ -20,6 +20,7 @@
 - React 심화
 - 프로젝트로 배우는 Vanilla JS와 React
 - 데이터베이스: My SQL
+- https://github.com/rktdnjs/Starbucks_Gift (선택 과정 Repository)
 
 ### Conventional Commits
 
