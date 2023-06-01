@@ -278,3 +278,408 @@ loadImage("https://www.gstatic.com/webp/gallery/4.jpg", (imgEl) => {
     containerEl.append(imgEl)
 })
 */
+
+// 재귀(Recursive)
+/*
+let i = 0
+const a = () => {
+    console.log('A')
+    i += 1
+    if (i < 4) {
+        a()
+    }
+}
+
+a()
+*/
+/*
+const userA = {name : 'A', parent : null}
+const userB = {name : 'B', parent : userA}
+const userC = {name : 'C', parent : userB}
+const userD = {name : 'D', parent : userC}
+
+// user 객체가 들어가서 parent에 대한 데이터가 존재한다면 재귀함수를 호출한다.
+const getRootUser = user => {
+    if (user.parent) {
+        return getRootUser(user.parent)
+    }
+    return user
+}
+
+// 전부 동일한 결과, A객체에 대한 정보가 출력된다
+console.log(getRootUser(userD))
+console.log(getRootUser(userC))
+console.log(getRootUser(userB))
+console.log(getRootUser(userA))
+*/
+
+/* ----- 호출 스케줄링 ----- */
+
+// 호출 스케줄링(Scheduling a function call) - setTimeout & setInterval
+// 자바스크립트에서 함수의 호출을 지연하거나 반복적으로 호출할 수 있게 해준다.
+
+/*
+const hello = () => {
+    console.log('Hello World!')
+}
+const hello2 = () => {
+    console.log('Hello World!?')
+}
+
+const timeout = setTimeout(hello, 2000);
+const timeout2 = setInterval(hello2, 2000);
+
+const h1El = document.querySelector('h1')
+
+h1El.addEventListener('click', () => {
+    console.log('Timer Clear!')
+    clearTimeout(timeout)  // 타임아웃 해제
+    clearTimeout(timeout2) // 타임아웃 해제
+})
+*/
+
+/* ----- this 키워드 ----- */
+
+// this
+// 일반 함수의 this는 호출 위치에서 정의
+// 화살표 함수의 this는 자신이 선언된 함수(렉시컬) 범위에서 정의
+
+/*
+function user() {
+    this.firstName = 'Neo'
+    this.lastName = 'Anderson'
+
+    return {
+        firstName: 'Hello',
+        lastName: 'World',
+        age: 85,
+        getFullName() {
+            return `${this.firstName} ${this.lastName}`
+        }
+    }
+}
+
+const lewis = {
+    firstName: 'Lewis',
+    lastName: 'Yang'
+}
+
+const u = user()
+console.log(u.getFullName())
+console.log(u.getFullName.call(lewis)) // getFullName 메소드를 빌려서 사용할 객체를 넣어준다.
+*/
+
+/*
+const timer = {
+    title: 'TIMER!',
+    timeout() {
+        console.log(this.title)
+        setTimeout(function () {
+            console.log(this.title)
+        }, 1000)
+    }
+}
+
+timer.timeout()
+*/
+
+/* ---------------------------------------------- Prototype ---------------------------------------------- */
+
+/*
+const fruits2 = ['Apple', 'Banana', 'Cherry'] // 리터럴 방식 - [] 대괄호를 이용하여 생성
+const fruits = new Array('Apple', 'Banana', 'Cherry') // 생성자 함수를 통해서도 배열을 만들 수 있다.
+
+console.log(fruits)
+console.log(fruits.length)
+console.log(fruits.includes('Banana'))
+
+// Array객체에서 프로토타입으로 heropy라는 메소드를 추가한 것
+Array.prototype.heropy = function () {
+    console.log(this)
+}
+
+fruits.heropy()
+
+const arr = []
+arr.heropy()
+*/
+
+/*
+const heropy = {
+    firstName: 'Heropy',
+    lastName: 'Park',
+    getFullName() {
+        return `${this.firstName} ${this.lastName}`
+    }
+}
+
+const neo = {
+    firstName: 'Neo',
+    lastName: 'Anderson',
+}
+
+// 일반함수에서의 this는 함수가 호출되는 곳에서 정의된다.
+// 따라서 getFullName()이 호출되는 heropy 객체 데이터가 this가 된다.
+console.log(heropy.getFullName())
+console.log(heropy.getFullName.call(neo)) // 호출하는 대상 객체가 neo 객체가 된다(메소드만 빌림).
+*/
+
+/*
+function User(first, last) {
+    this.firstName = first
+    this.lastName = last
+}
+
+// 여기서 화살표함수를 쓸경우 this의 정의가 바뀌기 때문에 절대 사용 x!!
+// getFullName 함수가 User 함수의 프로토타입으로 등록이 되어서 활용가능해진것!
+User.prototype.getFullName = function () {
+    return `${this.firstName} ${this.lastName}`
+}
+
+const heropy = new User('Heropy', 'Park')
+const neo = new User('Neo', 'Anderson')
+
+console.log(heropy) // User 생성자 함수를 통해 객체를 생성함
+console.log(neo)
+console.log(heropy.getFullName())
+console.log(neo.getFullName())
+*/
+
+/* ---------------------------------------------- ES6 Classes ---------------------------------------------- */
+
+// 프로토타입과 클래스가 어떻게 다른가?
+
+// 프로토타입 문법(Prototype)
+// User 생성자 함수를 만들어서 User 객체 만들기
+/*
+function User(first, last) {
+    this.firstName = first
+    this.lastName = last
+}
+
+User.prototype.getFullName = function () {
+    return `${this.firstName} ${this.lastName}`
+}
+
+const heropy = new User('Heropy', 'Park')
+const neo = new User('Neo', 'Anderson')
+
+console.log(heropy.getFullName())
+console.log(neo.getFullName())
+*/
+
+// 클래스 문법
+/*
+class User {
+    constructor(first, last) {
+        this.firstName = first
+        this.lastName = last
+    }
+
+    // 객체의 메소드를 prototype을 쓰지않고 바로만들수 있음
+    getFullName() {
+        return `${this.firstName} ${this.lastName}`
+    }
+}
+
+const heropy = new User('Heropy', 'Park')
+const neo = new User('Neo', 'Anderson')
+
+console.log(heropy.getFullName())
+console.log(neo.getFullName())
+*/
+
+/* ---------------------------------------------- Getter, Setter ---------------------------------------------- */
+
+// Getter, Setter
+// Getter : 값을 얻어내는 용도의 메소드
+// Setter : 값을 지정하는 용도의 메소드
+
+/*
+class User {
+    constructor(first, last) {
+        this.firstName = first
+        this.lastName = last
+    }
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`
+    }
+    set fullName(value) {
+        [this.firstName, this.lastName] = value.split(' ')
+    }
+}
+
+const heropy = new User('Heropy', 'Park')
+
+// console.log(heropy.fullName)
+
+// heropy.firstName = 'Neo'
+
+// console.log(heropy.fullName)
+
+heropy.fullName = 'Neo Anderson' // fullName에 어떤 값을 지정하는 setter가 사용된다.
+
+console.log(heropy.fullName)
+*/
+
+/* ---------------------------------------------- 정적 메소드 ---------------------------------------------- */
+/*
+class User {
+    constructor(first, last) {
+        this.firstName = first
+        this.lastName = last
+    }
+
+    // 이렇게 만드는 일반 메소드는 프로토타입 메소드라고 부를 수 있다.
+    // 프로토타입 메소드는 인스턴스 부분에서 사용하는 것이며, 클래스 자체에서 호출은 불가능
+    getFullName() {
+        return `${this.firstName} ${this.lastName}`
+    }
+
+    // 클래스에서 직접적으로 사용하는 메소드를 만드려면 static 키워드 추가
+    // 이렇게 표시한 메소드는 이제 정적 메소드, 클래스 자체에서 호출 가능
+    // 객체로 만든 인스턴스에서는 사용 불가능
+    static isUser(user) {
+        if (user.firstName && user.lastName) {
+            return true
+        }
+        return false
+    }
+}
+
+const heropy = new User('Heropy', 'Park')
+const neo = new User('Neo', 'Anderson')
+const lewis = {
+    name: "Lewis Yang",
+    age : 85
+}
+
+console.log(heropy)
+console.log(neo)
+
+// console.log(User.getFullName()) // 오류, 클래스에서 일반 메소드의 즉시 호출은 불가능
+// console.log(heropy.isUser()) // 객체(인스턴스)에서 정적 메소드는 사용 불가능
+
+console.log(User.isUser(heropy)) // true
+console.log(User.isUser(lewis))  // false, 객체 구조가 다름!
+*/
+
+/* ---------------------------------------------- 상속(Inheritance) ---------------------------------------------- */
+
+/*
+class Vehicle {
+    // 생성자에서 매개변수를 받아 내부에서 사용하고 있다.
+    // 매개변수가 없을 경우 그 기본값으로 1을 사용함을 코드로 작성함
+    constructor(acceleration = 1) {
+        this.speed = 0
+        this.acceleration = acceleration // 외부 값으로 할당, 없으면 기본값 1로 할당
+    }
+    accelerate() {
+        this.speed += this.acceleration
+    }
+    decelerate() {
+        if(this.speed <= 0) {
+            console.log('정지!')
+            return
+        }
+        this.speed -= this.acceleration
+    }
+}
+
+// 자전거
+// extends 키워드를 통해 Vehicle의 내용물을 상속받아 사용한다.
+// super를 통해 Vehicle(부모)이 가진 생성자를 사용할 수 있다.
+class Bicycle extends Vehicle {
+    constructor(price = 100, acceleration) {
+        super(acceleration)
+        this.price = price
+        this.wheel = 2
+    }
+}
+
+const bicycle = new Bicycle(300, 2)
+bicycle.accelerate()
+bicycle.accelerate()
+console.log(bicycle)
+console.log(bicycle instanceof Bicycle) // instanceof 앞쪽의 변수가 뒤쪽의 클래스로부터 생성되었는지 확인
+console.log(bicycle instanceof Vehicle) 
+
+// 자동차
+class Car extends Bicycle {
+    constructor(license, price, acceleration) {
+        super(price, acceleration)
+        this.license = license
+        this.wheel = 4
+    }
+
+    // 메소드 재정의(오버라이딩)
+    accelerate() {
+        if(!this.license) {
+            console.error('무면허입니다!')
+            return
+        }
+        this.speed += this.acceleration
+        console.log('가속!', this.speed)
+    }
+}
+
+const carA = new Car(true, 7000, 10)
+const carB = new Car(false, 4000, 6)
+carA.accelerate()
+carA.accelerate()
+carB.accelerate()
+console.log(carA instanceof Car) 
+console.log(carB instanceof Car) 
+console.log(carA)
+console.log(carB)
+
+// 보트
+class Boats extends Vehicle {
+    constructor(price, acceleration) {
+        super(acceleration)
+        this.price = price
+        this.motor = 1
+    }
+}
+
+const boat = new Boats(10000, 5)
+console.log(boat)
+*/
+
+/* ---------------------------------------------- instanceof 그리고 constructor ---------------------------------------------- */
+
+class A {
+    constructor() {
+
+    }
+}
+
+class B extends A {
+    constructor() {
+        super() // 상속받고 있으므로 super()를 통해 부모의 생성자를 빌려와서 사용
+    }
+}
+
+class C extends B {
+    constructor() {
+        super() // 상속받고 있으므로 super()를 통해 부모의 생성자를 빌려와서 사용
+    }
+}
+
+const a = new A() // 인스턴스(생성자 함수로부터 생성한 객체)
+const b = new B()
+const c = new C()
+
+console.log(a instanceof A) // true
+console.log(a instanceof B) // false, a는 B클래스와는 관계x
+console.log(a instanceof C) // false, 위와 동일
+
+console.log(b instanceof A) // true, b는 A를 상속받아 만든 B클래스에서 만든것이므로 O
+console.log(b instanceof B) // true
+console.log(b instanceof C) // false, b는 C클래스와는 관계x
+
+// 생성한 객체가 어떤 클래스로부터 만들어졌는지 확인할 때는 constructor를 쓰는 것을 추천!!
+console.log(c.constructor === A) // 사실상 c의 생성자는 조상인 A와는 다른 구조를 지닌다. 따라서 false
+console.log(b.constructor === A)
+console.log(a.constructor === A)
+
