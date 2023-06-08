@@ -276,3 +276,176 @@ const wrap = async () => {
 */
 
 /* <-------------------------------> */
+
+// DOM(Document Object Model)
+// DOM API(DOM에서 사용할 수 있는 다양한 명령어들)
+
+// DOM이란 HTML문서를 객체로 표현한 것
+// JS에서 HTML을 제어할 수 있게 해줌!
+
+// const element = document.querySelector('h1')
+// console.log(element.textContent) // HTML을 제어할 수 있음!
+
+// Node vs Element
+
+// 노드(Node) : HTML요소, 텍스트, 주석 등 모든 것을 의미함
+// 요소(Element) : HTML 요소를 의미함
+
+// const parent = document.querySelector('.parent')
+
+// // 부모 요소의 모든 자식 '노드' 확인
+// console.log(parent.childNodes)
+
+// // 부모 요소의 모든 자식 '요소' 확인
+// console.log(parent.children)
+
+// // dir - 객체 데이터처럼 출력할 수 있다.
+// console.dir(parent)
+
+// class N {}
+// class E extends N {} // N을 상속받은 E클래스
+
+// console.dir(E)
+// console.dir(N)
+// console.dir(E.__proto__)
+
+// console.dir(Element)
+// console.dir(Node)
+// console.dir(Element.__proto__)
+
+/* <----------------- 구분선 -----------------> */
+
+// document.getElementById()
+
+// HTML `id` 속성(Attributes) 값으로 검색한 요소를 반환함
+// 여러 요소가 검색되면, 가장 먼저 찾은 요소만 반환함
+// 검색 결과가 없으면, `null`을 반환함
+
+// const el = document.getElementById('child123')
+// console.log(el)
+
+// document.querySelector()
+
+// 'CSS 선택자'로 검색한 요소를 하나 반환함
+// 여러 요소가 검색되면, 가장 먼저 찾은 요소만 반환함
+// 검색 결과가 없으면, `null`을 반환함
+
+// const el = document.querySelector('.child:first-child')
+// console.log(el) // <div class="child">1</div> 출력
+
+// document.querySelectorAll()
+
+// 'CSS 선택자'로 검색한 모든 요소를 `NodeList`로 반환함
+// `NodeList` 객체는 `.forEach()`를 사용할 수 있음
+
+// const nodeList = document.querySelectorAll('.child')
+// console.log(nodeList)
+// nodeList.forEach(el => console.log(el.textContent))
+
+// console.log(Array.from(nodeList).reverse()) // 유사 배열을 객체 데이터로 변환
+
+// N.parentElement(노드에 사용가능)
+
+// 노드의 부모 요소를 반환함
+
+// const el = document.querySelector('.child')
+// console.log(el.parentElement)
+
+// E.closest()
+
+// 자신을 포함한 조상 요소 중 'CSS 선택자'와 일치하는
+// 가장 가까운 요소를 반환함
+// 요소를 찾지 못하면, `null`을 반환함
+
+// const el = document.querySelector('.child')
+
+// console.log(el.closest('div'))
+// console.log(el.closest('body'))
+// console.log(el.closest('.hello'))
+
+// N.previousSibling / N.nextSibling
+
+// 노드의 이전 형제 혹은 다음 형제 노드를 반환함
+
+// const el = document.querySelector('.child')
+// console.log(el.previousSibling) // 이전 형제
+// console.log(el.nextSibling) // 다음 형제
+
+// E.previousElementSibling / E.nextElementSibling
+// 요소의 이전 형제 혹은 다음 형제 요소를 반환함
+
+// const el = document.querySelector('.child')
+// console.log(el.previousElementSibling) // 이전 형제
+// console.log(el.nextElementSibling) // 다음 형제
+
+// E.children
+
+// 요소의 모든 자식 요소를 반환함
+
+// const el = document.querySelector('.parent')
+// console.log(el.children)
+
+// console.log(Array.from(el.children))
+
+// E.firstElementChild / E.lastElementChild
+
+// 요소의 1번째 자식 혹은 마지막 자식 요소를 반환함
+
+// const el = document.querySelector('.parent')
+// console.log(el.firstElementChild)
+// console.log(el.lastElementChild)
+
+// document.createElement()
+// 메모리에만 존재하는 새로운 HTML 요소를 생성해 반환함
+
+// const divEl = document.createElement('div')
+// console.log(divEl)
+
+// const inputEl = document.createElement('input')
+// console.log(inputEl)
+
+// E.prepend() / E.append()
+// 노드를 요소의 1번째 혹은 마지막 자식으로 삽입함
+
+// const parentEl = document.querySelector('.parent')
+
+// const el = document.createElement('div')
+// el.textContent = 'Hello~'
+
+// parentEl.prepend(new Comment(' 주석 '))
+// parentEl.append(el)
+// parentEl.append('Text!')
+
+// E.remove()
+// 요소를 제거함
+
+// const el = document.querySelector('.child')
+// el.remove() // <div class="child">1</div> 제거됨!
+
+// E.insertAdjacentElement()
+
+// '대상 요소'의 지정한 위치에 '새로운 요소'를 삽입함
+// 대상_요소.insertAdjacentElement(위치, 새로운_요소)
+
+// 위치값
+// beforebegin
+// afterbegin
+// beforeend
+// afterend
+
+// const childEl = document.querySelector('.child')
+// const newEl = document.createElement('span')
+// newEl.textContent = 'Hello~'
+
+// childEl.insertAdjacentElement('afterend', newEl)
+
+// N.insertBefore()
+// '부모 노드'의 자식인 '참조 노드'의 이전 형제로 '노드'를 삽입함
+// 부모_노드.insertBefore(노드, 참조_노드)
+
+// const parentEl = document.querySelector('.parent')
+// const childEl = document.querySelector('.child')
+// const newEl = document.createElement('span')
+// newEl.textContent = 'Hello~'
+
+// parentEl.insertBefore(newEl, childEl)

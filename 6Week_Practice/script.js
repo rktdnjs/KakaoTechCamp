@@ -1463,7 +1463,7 @@ console.log(JSON.stringify([1, 2, 3]))
 
 console.log('// ---------------------- // ')
 
-// parse 시 문자열은 큰 따옴표로 한번 묶어주어야 한다.
+// parse 시 문자열은 큰 따옴표로 한번 포함해야 한다.
 // 또한 객체 속성명도 큰 따옴표로 한번 묶어주어야 한다.
 console.log(JSON.parse('"Hello world!"'))
 console.log(JSON.parse('123'))
