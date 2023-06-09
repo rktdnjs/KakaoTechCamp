@@ -449,3 +449,503 @@ const wrap = async () => {
 // newEl.textContent = 'Hello~'
 
 // parentEl.insertBefore(newEl, childEl)
+
+// N.contains()
+
+// '주어진 노드'가 '노드'의 자신을 포함한 후손인지 확인함
+// 노드.contains(주어진_노드)
+
+// const parentEl = document.querySelector('.parent')
+// const childEl = document.querySelector('.child')
+
+// console.log(parentEl.contains(childEl))       // true
+// console.log(document.body.contains(parentEl)) // true
+// console.log(document.body.contains(childEl))  // true
+// console.log(document.body.contains(document.body)) // true
+// console.log(parentEl.contains(parentEl)) // true
+// console.log(parentEl.contains(document.body)) // false
+// console.log(childEl.contains(document.body))  // false
+
+// N.textContent
+// 노드의 모든 텍스트를 얻거나 변경함
+
+// const el = document.querySelector('.child')
+// console.log(el.textContent)
+
+// el.textContent = '7'
+// console.log(el.textContent)
+
+// E.innerHTML
+// '요소'의 모든 HTML 내용을 하나의 문자로 얻거나,
+// 새로운 HTML을 지정함
+
+// const el = document.querySelector('.parent')
+// console.log(el.innerHTML)
+
+// el.innerHTML = /* html */ `
+// <div style="border: 4px solid;">
+//   <span style="color: red;">Hello~</span>
+//   <span style="color: red;">Hello~</span>
+// </div>`
+
+// E.dataset
+// 요소의 각 `data-` 속성 값을 얻거나 지정함
+
+// const el = document.querySelector('.child')
+// const str = 'Hello World!'
+// const obj = { a : 1, b : 2 }
+
+// el.dataset.helloWorld = str
+// // obj를 문자화시켰기에 dataset의 object에 할당이 가능한 것!
+// el.dataset.object = JSON.stringify(obj)
+
+
+// console.log(el.dataset.helloWorld)
+// console.log(el.dataset.object)
+// // 실제 객체 데이터로 사용하기 위해 JSON.parse 사용
+// console.log(JSON.parse(el.dataset.object)) 
+
+// E.tagName
+// 요소의 태그 이름을 반환함
+
+// const parentEl = document.querySelector('.parent')
+// const childEl = document.querySelector('.child')
+// const el = document.createElement('span')
+
+// console.log(parentEl.tagName)
+// console.log(childEl.tagName)
+// console.log(el.tagName)
+// console.log(document.body.tagName)
+
+// E.id
+// 요소의 `id` 속성 값을 얻거나 지정함
+
+// const el = document.querySelector('.child')
+// console.log(el.id) // 아직은 id가 없어서 아무것도 출력 x(빈 문자)
+
+// el.id = 'child1'   // el의 id를 지정해줌!
+// console.log(el.id) // child1 출력
+// console.log(el)    // <div class="child" id="child1">1</div> 출력
+
+// E.className
+// 요소의 `class` 속성 값을 얻거나 지정함
+
+// const el = document.querySelector('.child')
+// console.log(el.className)
+
+// el.className += ' child1 active' 
+// console.log(el.className) 
+// console.log(el)    
+
+// E.classList
+// 요소의 `class` 속성 값을 제어함
+
+// `.add()` : 새로운 값을 추가
+// `.remove()` : 기존 값을 제거
+// `.toggle()` : 값을 토글
+// `.contains()` : 값을 확인
+
+// const el = document.querySelector('.child')
+
+// el.classList.add('active')
+// console.log(el.classList.contains('active')) // true
+
+// el.classList.remove('active')
+// console.log(el.classList.contains('active')) // false
+
+// el.addEventListener('click', () => {
+//   el.classList.toggle('active') // add <-> remove 반복
+//   console.log(el.classList.contains('active'))
+// })
+
+// E.style
+// 요소의 `style` 속성(인라인 스타일)의 CSS 속성값을 얻거나 지정함
+// CSSStyleDeclaration 객체에서는 요소에 적용된 실제 CSS 속성값들의 객체를 얻을 수 있다.
+
+// const el = document.querySelector('.child')
+
+
+// // 개별 지정!
+// el.style.width = '100px'
+// el.style.fontSize = '20px'
+// el.style.backgroundColor = 'green'
+// el.style.position = 'absolute'
+
+
+
+// // 한 번에 지정!
+// // Object.assign(el.style, {
+// //   width = '100px'
+// //   fontSize = '20px'
+// //   backgroundColor = 'green'
+// //   position = 'absolute'
+// // })
+
+
+// console.log(el.style)
+// console.log(el.style.width)
+// console.log(el.style.fontSize)
+// console.log(el.style.backgroundColor)
+// console.log(el.style.position)
+
+// window.getComputedStyle()
+// 요소에 적용된 스타일 객체를 반환함
+
+// const el = document.querySelector('.child')
+// const styles = window.getComputedStyle(el)
+
+// console.log(styles)
+// console.log(styles.width)
+// console.log(styles.fontSize)
+// console.log(styles.backgroundColor)
+// console.log(styles.position)
+
+// E.getAttribute() / E.setAttribute()
+// 요소에서 특정 속성 값을 얻거나 지정함
+
+// const el = document.querySelector('.child')
+
+// el.setAttribute('title', 'Hello World!')
+// console.log(el.getAttribute('title'))
+
+// E.hasAttribute() / E.removeAttribute()
+// 요소에서 특정 속성 값을 확인하거나 제거함
+
+// const el = document.querySelector('.child')
+
+// console.log(el.hasAttribute('class')) // true
+
+// el.removeAttribute('class')
+// console.log(el.hasAttribute('class')) // false
+
+// console.log(el)
+
+// window.innerWidth / window.innerHeight
+// 현재 화면(Viewport)의 크기를 얻음
+
+// console.log(window.innerWidth)
+// console.log(window.innerHeight)
+
+// window.scrollX / window.scrollY 
+// 페이지의 좌상단 기준, 현재 화면(Viewport)의 
+// 수평 or 수직 스크롤 위치를 얻음
+
+// console.log(window.scrollX, window.scrollY)
+
+// window.scrollTo() / E.scrollTo()
+// 지정된 좌표로 대상(화면, 스크롤 요소)을 스크롤함
+// 대상.scrollTo(X좌표, Y좌표)
+// 대상.scrollTo({ top: Y, left: X, behavior: 'smooth' }) 화면이 부드럽게 움직임!
+
+// const parentEl = document.querySelector('.parent')
+
+// setTimeout(() => {
+//   parentEl.scrollTo({
+//     left:0,
+//     top:500,
+//     behavior:'smooth'
+//   }) // parentEl요소에 1초후 자동 스크롤(스무스하게 이동)
+// }, 1000)
+
+// E.clientWidth / E.clientHeight
+// 테두리 선(border)을 제외한 요소의 크기를 얻음
+// 스크롤바가 있을경우 해당하는 부분의 크기를 뺀 크기를 얻음(주의)
+// 해당 속성은 잘 사용하지 않음..!
+
+// const parentEl = document.querySelector('.parent')
+// const childEl = document.querySelector('.child')
+
+// console.log(parentEl.clientWidth, parentEl.clientHeight) // 325(300 + 20 + 20 - 스크롤바) 240(200 + 20 + 20)
+// console.log(childEl.clientWidth, childEl.clientHeight)   // 265(325 - 20 - 20 - 10 - 10) 100
+
+// E.offsetWidth / E.offsetHeight
+// 테두리 선(border)을 포함한 요소의 크기를 얻음
+
+// const parentEl = document.querySelector('.parent')
+// const childEl = document.querySelector('.child')
+
+// console.log(parentEl.offsetWidth, parentEl.offsetHeight) // 360(300 + 20*2 + 10*2) 260(200 + 20*2 + 10*2)
+// console.log(childEl.offsetWidth, childEl.offsetHeight)   // 285(360- 20*2 - 10*2 - 스크롤바) 120(100 + 10*2)
+
+// E.scrollLeft / E.scrollTop
+// 스크롤 요소의 좌상단 기준
+// 현재 스크롤 요소의 수평 혹은 수직 스크롤 위치를 얻음
+
+// window.parentEl = document.querySelector('.parent') // window의 객체에 parentEl 속성을 따로 만들어 할당
+
+// console.log(parentEl.scrollLeft, parentEl.scrollTop)
+
+// E.offsetLeft / E.offsetTop
+// 페이지의 좌상단 기준, 요소의 위치를 얻음
+
+// const parentEl = document.querySelector('.parent')
+// const childEl = document.querySelector('.child')
+
+// console.log(parentEl.offsetLeft, parentEl.offsetTop) // 8 1058
+// console.log(childEl.offsetLeft, childEl.offsetTop)   // 38 1638
+
+// E.getBoundingClientRect()
+
+// 테두리 선(border)을 포함한 요소의 크기 &
+// 화면에서의 상대 위치 정보를 얻음
+// 상대 위치이기 때문에 스크롤의 위치가 바뀌면 값이 변함!
+
+// const parentEl = document.querySelector('.parent')
+// const childEl = document.querySelector('.child')
+
+// console.log(parentEl.getBoundingClientRect())
+// console.log(childEl.getBoundingClientRect())
+
+// .addEventListener()
+// 대상에 이벤트 청취(Listen)을 등록함
+// 대상에 지정한 이벤트가 발생했을때 지정한 함수(Handler)가 호출됨
+
+// const parentEl = document.querySelector('.parent')
+// const childEl = document.querySelector('.child')
+
+// parentEl.addEventListener('click', () => {
+//   console.log('Parent!')
+// })
+
+// // child요소의 영역이기도 하지만 parent요소의 영역이기도 함
+// // 따라서 Parent! Child! 둘다 출력됨
+// childEl.addEventListener('click', () => {
+//   console.log('Child!')
+// })
+
+// .removeEventListener()
+// 대상에 이벤트 청취(Listen)을 제거함
+// 메모리 관리를 위해 등록한 이벤트를 제거하는 과정이 필요할 수 있음
+
+// const parentEl = document.querySelector('.parent')
+// const childEl = document.querySelector('.child')
+
+// // remove를 이용해서 특정 핸들러를 삭제할거라면 따로 만들어두는것이 좋다.
+// const handler = () => {
+//   console.log('Parent!')
+// }
+
+// parentEl.addEventListener('click', handler)
+// childEl.addEventListener('click', () => {
+//   // 제거하고자 하는 이벤트의 이름, 연결된 handler를 2번째 인자로 넣어줌
+//   parentEl.removeEventListener('click', handler)
+// })
+
+// 이벤트 객체
+// 이벤트 객체는 대상에서 발생한 이벤트 정보를 담고 있음
+
+// const parentEl = document.querySelector('.parent')
+
+// parentEl.addEventListener('click', (event) => {
+//   console.log(event.target, event.currentTarget)
+//   console.log(event) // PointerEvent 내용 출력
+// })
+// parentEl.addEventListener('wheel', (event) => {
+//   console.log(event)
+// })
+
+// const inputEl = document.querySelector('input')
+
+// inputEl.addEventListener('keydown', event => {
+//   console.log(event.key)
+// })
+
+// 기본 동작 방지
+// 우리가 사용하는 브라우저의 기본 동작을 막을 수 있음!
+
+// 마우스 휠의 스크롤 동작 방지!
+// const parentEl = document.querySelector('.parent')
+// parentEl.addEventListener('wheel', (event) => {
+//   event.preventDefault()
+//   console.log('Wheel!')
+// })
+
+// // <a> 태그에서 페이지 이동 방지!
+// const anchorEl = document.querySelector('a')
+// anchorEl.addEventListener('click', event => {
+//   event.preventDefault()
+//   console.log('Click!')
+// })
+
+// 이벤트 전파(버블) 정지
+
+// const parentEl = document.querySelector('.parent')
+// const childEl = document.querySelector('.child')
+// const anchorEl = document.querySelector('a')
+
+// window.addEventListener('click', event => {
+//   console.log('Window!')
+// }, { capture : true })
+// document.addEventListener('click', event => {
+//   console.log('Body!')
+//   event.stopPropagation()
+// }, { capture : true })
+// parentEl.addEventListener('click', event => {
+//   console.log('Parent!')
+// }, { capture : true })
+// childEl.addEventListener('click', event => {
+//   console.log('Child!')
+// })
+// anchorEl.addEventListener('click', event => {
+//   console.log('Anchor!')
+// })
+
+// const parentEl = document.querySelector('.parent')
+
+// const handler = () => {
+//   console.log('Parent!')
+// }
+
+// parentEl.addEventListener('click', handler, {
+//   capture : true 
+// })
+// parentEl.removeEventListener('click', handler, {
+//   capture : true
+// }) 
+
+// 기본 동작과 핸들러 실행 분리
+
+// const parentEl = document.querySelector('.parent')
+
+// parentEl.addEventListener('wheel', event => {
+//   for (let i = 0; i < 10000; i += 1) {
+//     console.log(i)
+//   }
+// }, {
+//   passive : true
+// })
+
+// 이벤트 위임(Delegation)
+
+// 비슷한 패턴의 여러 요소에서 이벤트를 핸들링해야 하는 경우,
+// 단일 조상 요소에서 제어하는 이벤트 위임 패턴을 사용할 수 있다.
+
+// const parentEl = document.querySelector('.parent')
+// const childEls = document.querySelectorAll('.child') // NodeList 반환, forEach 사용 가능!
+
+// 모든 대상 요소에 이벤트 등록!
+// childEls.forEach(el => {
+//   el.addEventListener('click', event => {
+//     console.log(event.target.textContent)
+//     // 4개의 요소에 로직이 겹치기 때문에 이벤트 위임을 통해 1번만 등록해서 써보자!
+//   })
+// })
+
+// 조상 요소에 이벤트 위임!
+// parentEl.addEventListener('click', event => {
+//   const childEl = event.target.closest('.child')
+//   // 자신을 포함한 조상 요소 중 'CSS 선택자'와 일치하는 가장 가까운 요소를 반환함
+//   // 이벤트 발생 위치로부터 가장 가까운 .child를 찾아냄
+
+//   // 찾은 요소가 없을경우(null) 아래 구문이 실행되지 않는다.
+//   if (childEl) {
+//     console.log(childEl.textContent)
+//   }
+// })
+
+// Mouse & Pointer Events
+
+// click        | 클릭 시
+// dblclick     | 더블 클릭 시
+// mousedown    | 버튼을 누를 때
+// mouseup      | 버튼을 뗄 때
+// mouseenter   | 포인터가 요소 위로 들어갈 때
+// mouseleave   | 마우스가 요소 밖으로 나올 때
+// mousemove    | 포인터가 요소 내에서 움직일 때
+// contextmenu  | 우클릭 했을 때
+// wheel        | 휠 버튼이 회전할 때
+
+// const parentEl = document.querySelector('.parent')
+// const childEl = document.querySelector('.child')
+
+// childEl.addEventListener('mousemove', (event) => {
+//   console.log(event.offsetX, event.offsetY)
+// })
+
+// Keyboard Event
+
+// keydown | 키를 누를 때 
+// keyup   | 키를 뗄 때
+
+// const inputEl = document.querySelector('input')
+
+// inputEl.addEventListener('keydown', event => {
+//   if (event.key === 'Enter') {
+//     console.log(event.isComposing)  // 처리 중이라면 true, 아니라면 false
+//     console.log(event.target.value) // input 요소에 입력된 값
+//   }
+// })
+
+// Focus & Form Events
+
+// focus  | 요소가 포커스를 얻었을 때
+// blur   | 요소가 포커스를 잃었을 때
+// input  | 값이 변경되었을 때
+// change | 상태가 변경되었을 때(tab, enter 키 등으로 인한 상태 변화)
+// submit | 제출 버튼을 선택했을 때
+// reset  | 리셋 버튼을 선택했을 때
+
+// const formEl = document.querySelector('form')
+// const inputEls = document.querySelectorAll('input')
+
+// inputEls.forEach(el => {
+//   el.addEventListener('focus', () => {
+//     formEl.classList.add('active')    // active 클래스 활성화
+//   })
+//   el.addEventListener('blur', () => {
+//     formEl.classList.remove('active') // active 클래스 비활성화
+//   })
+//   el.addEventListener('change', event => {
+//     console.log(event.target.value)
+//   })
+// })
+
+// formEl.addEventListener('submit', event => {
+//   event.preventDefault() // form에서 submit 작동 시 페이지 새로고침이 기본 동작 <- 얘를 막음
+//   const data = {
+//     // 이벤트가 발생한 대상 요소의 0, 1번째 값
+//     id : event.target[0].value,
+//     pw : event.target[1].value
+//   }
+//   console.log('제출!', data)
+// })
+
+// formEl.addEventListener('reset', event => {
+//   console.log('리셋!')
+// })
+
+// 커스텀 이벤트와 디스패치
+
+const child1 = document.querySelector('.child:nth-child(1)')
+const child2 = document.querySelector('.child:nth-child(2)')
+
+child1.addEventListener('hello-world', event => {
+  console.log('커스텀 이벤트 발생!')
+  console.log(event.detail)
+})
+
+child2.addEventListener('click', () => {
+  child1.dispatchEvent(new CustomEvent('hello-world', {
+    detail : 123
+  }))
+})
+
+// child1.addEventListener('click', event => {
+//   // 강제로 이벤트 발생!
+//   // child1을 통해 child2의 이벤트를 강제로 발생시킴
+//   child2.dispatchEvent(new Event('click'))
+//   child2.dispatchEvent(new Event('wheel'))
+//   child2.dispatchEvent(new Event('keydown'))
+// })
+
+// child2.addEventListener('click', event => {
+//   console.log('Child2 Click!')
+// })
+
+// child2.addEventListener('wheel', event => {
+//   console.log('Child2 wheel!')
+// })
+
+// child2.addEventListener('keydown', event => {
+//   console.log('Child2 keydown!')
+// })
